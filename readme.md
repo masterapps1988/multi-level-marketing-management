@@ -1,6 +1,6 @@
 ##APLIKASI MULTI LEVEL MARKETING V1
 
-Aplikasi ini menggunakan Framework NodeJS + Express dan database  menggunaka MongoDB
+Aplikasi ini menggunakan Framework NodeJS + Express dan database menggunakan MongoDB
 
 Untuk demo silahkan kan [Disini](http://35.240.172.71:8080).
 
