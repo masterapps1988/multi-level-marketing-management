@@ -2,7 +2,7 @@
 
 Aplikasi ini menggunakan Framework NodeJS + Express dan database  menggunaka MongoDB
 
-Untuk demo silahkan kan [Disini] (http://35.240.172.71:8080).
+Untuk demo silahkan kan [Disini](http://35.240.172.71:8080).
 
 Apabila ada bug silahkan hub masterapps1988@gmail.com
 
