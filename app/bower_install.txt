@@ -1,0 +1,2 @@
+bower install https://github.com/FortAwesome/Font-Awesome.git
+bower install orgchart

@@ -1,0 +1,6 @@
+<div ng-show="$ctrl.getMessage()" class="alert" ng-class="{'alert-error': $ctrl.isError(), 'alert-success': !$ctrl.isError() }" role="alert">
+    <p ng-if="!$ctrl.isArray()">{{ $ctrl.getMessage() }}</p>
+    <ul ng-if="$ctrl.isArray()">
+        <li ng-repeat="x in $ctrl.getMessage() track by $index">{{ x }}</li>
+    </ul>
+</div>

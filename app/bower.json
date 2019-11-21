@@ -1,0 +1,24 @@
+{
+  "name": "ibEz",
+  "authors": [
+    "The Badu's"
+  ],
+  "description": "Property Developer SYstem",
+  "main": "index.js",
+  "keywords": [
+    "erp"
+  ],
+  "license": "Closed Source",
+  "homepage": "",
+  "private": true,
+  "dependencies": {
+    "admin-lte": "^2.4.8",
+    "angular": "^1.7.5",
+    "angular-cookies": "^1.7.5",
+    "angular-ui-router": "^1.0.20",
+    "js-cookie": "^2.2.0"
+  },
+  "devDependencies": {
+    "jsgantt-improved": "https://github.com/jsGanttImproved/jsgantt-improved.git#v2.0.2"
+  }
+}

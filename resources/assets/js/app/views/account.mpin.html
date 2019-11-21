@@ -1,0 +1,115 @@
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper" ng-init="vm.init()">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>{{ vm.titleRole }}
+        </h1>
+        <ol class="breadcrumb">
+            <li class="active"><i class="fa fa-dashboard"></i> List Mpin</li>
+        </ol>
+    </section>
+    
+    <!-- Main content -->
+    <section class="content container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <!-- Search Widget -->
+                <div class="box">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Pencarian</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <form role="form" ng-submit="vm.doSearch()">
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Kata Kunci</label>
+                                        <input type="text" class="form-control" id="keyword" placeholder="Enter Kata Kunci" ng-model="vm.search.keyword">
+                                    </div>
+                                    <div class="pull-right">
+                                        <button type="button" class="btn btn-default" ng-click="vm.search.keyword = ''; vm.doSearch()">Clear</button>
+                                        <button type="submit" class="btn btn-primary">Cari</button> 
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div box-overlay is-loading="vm.ls.get('loading').get()"></div>
+                </div>
+                <!-- /.box -->
+
+                <!-- Create Widget -->
+                <div ng-if="main.ac.getRoleTypeName() != 'customer'" class="box" >
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Generate Pin</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <form role="form" ng-submit="vm.genMpin()">
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">User</label>
+                                        <select class="form-control select2" id="user_id" name="user_id" ng-model="vm.gen_mpin.customer_id" ng-select2  placeholder="Select User" required>
+                                            <option></option>
+                                            <option ng-repeat="x in vm.customers" value="{{ (x._id) }}">{{ x.full_name }}</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Nominal MPIN</label>
+                                        <input type="text" class="form-control" id="count" placeholder="Enter Nominal MPIN" ng-model="vm.gen_mpin.count" required>
+                                    </div>
+                                    <div class="pull-right">
+                                        <button type="submit" class="btn btn-primary">Create</button> 
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div box-overlay is-loading="vm.ls.get('loading').get()"></div>
+                </div>
+                <!-- /.box -->
+
+                <div class="box">
+                    <div box-overlay is-loading="vm.ls.get('loading').get()"></div>
+                    <div class="box-body">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <paging current-page="vm.paginator.current_page" last-page="vm.paginator.last_page" show-page="vm.showPage(page)"></paging>
+                                <div class="table-responsive">
+                                    <table class="table table-bordered">
+                                        <tr>
+                                            <th style="width: 10px">#</th>
+                                            <th>Fullname</th>
+                                            <th ng-click="vm.sortBy('mpin')">Mpin <sortable order="vm.getOrderBy('mpin')"></sortable></th>
+                                            <th ng-click="vm.sortBy('is_used')">Is Used <sortable order="vm.getOrderBy('is_used')"></sortable></th>
+                                            <th ng-click="vm.sortBy('is_used')">Is Actived <sortable order="vm.getOrderBy('is_used')"></sortable></th>
+                                            <th ng-click="vm.sortBy('created_at')">Generate <sortable order="vm.getOrderBy('created_at')"></sortable></th>
+                                            <th ng-click="vm.sortBy('used_at')">Actived <sortable order="vm.getOrderBy('used_at')"></sortable></th>
+                                            <!-- <th>Action</th> -->
+                                        </tr>
+                                        <tr ng-repeat="x in vm.list">
+                                            <td>{{ $index + 1 }}</td>
+                                            <td>{{ x.user_full_name }}</td>
+                                            <td>{{ x.mpin }}</td>
+                                            <td><span class="pull-right-container"><small ng-class="{'label bg-green': x.is_used == false, 'label bg-red': x.is_used == true}">{{ x.is_used }}</small></span></td>
+                                            <td><span class="pull-right-container"><small ng-class="{'label bg-green': x.is_actived == true, 'label bg-red': x.is_actived == false}">{{ x.is_actived }}</small></span></td>
+                                            <td>{{ x.created_at }}</td>
+                                            <td>{{ x.used_at }}</td>
+                                            <!-- <td><input type="checkbox" id="is_actived" ng-model="x.is_actived" value="1" ng-checked="x.is_actived" ng-change="vm.add(x)"></td> -->
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>            
+                <!-- /.box -->
+            </div>
+        </div>
+
+    </section>
+    <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->

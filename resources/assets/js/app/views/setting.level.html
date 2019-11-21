@@ -1,0 +1,87 @@
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper" ng-init="vm.init()">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1> List Level
+            <a ui-sref="setting-level-create" class="btn btn-primary" ng-if="main.ac.hasAccess('setting_level_create')"><i class="fa fa-plus"></i></a>
+        </h1>
+        <ol class="breadcrumb">
+            <li class="active"><i class="fa fa-dashboard"></i> List Level</li>
+        </ol>
+    </section>
+    
+    <!-- Main content -->
+    <section class="content container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <!-- Search Widget -->
+                <div class="box">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Pencarian</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <form role="form" ng-submit="vm.doSearch()">
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Kata Kunci</label>
+                                        <input type="text" class="form-control" id="keyword" placeholder="Enter Kata Kunci" ng-model="vm.search.keyword">
+                                    </div>
+                                    <div class="pull-right">
+                                        <button type="button" class="btn btn-default" ng-click="vm.search.keyword = ''; vm.doSearch()">Clear</button>
+                                        <button type="submit" class="btn btn-primary">Cari</button> 
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div box-overlay is-loading="vm.ls.get('loading').get()"></div>
+                </div>
+                <!-- /.box -->
+
+                <div class="box">
+                    <div box-overlay is-loading="vm.ls.get('loading').get()"></div>
+                    <div class="box-body">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <paging current-page="vm.paginator.current_page" last-page="vm.paginator.last_page" show-page="vm.showPage(page)"></paging>
+                                <div class="table-responsive">
+                                    <table class="table table-bordered">
+                                        <tr>
+                                            <th style="width: 10px">#</th>
+                                            <th ng-click="vm.sortBy('code')">Code <sortable order="vm.getOrderBy('code')"></sortable></th>
+                                            <th ng-click="vm.sortBy('name')">Name <sortable order="vm.getOrderBy('name')"></sortable></th>
+                                            <th ng-click="vm.sortBy('level')">Maximum Downline <sortable order="vm.getOrderBy('level')"></sortable></th>
+                                            <th ng-if="main.ac.hasAccesses(vm.getPermission('delete')) ||
+                                                main.ac.hasAccesses(vm.getPermission('detail'))">Action</th>
+                                        </tr>
+                                        <tr ng-repeat="x in vm.list">
+                                            <td>{{ $index + 1 }}</td>
+                                            <td>{{ x.code }}</td>
+                                            <td>{{ x.name }}</td>
+                                            <td>{{ x.level }}</td>
+                                            <td class="text-center" ng-if="main.ac.hasAccesses(vm.getPermission('delete')) ||
+                                                main.ac.hasAccesses(vm.getPermission('detail'))">
+                                                <a ui-sref="setting-level-detail({id: x._id})" ng-if="main.ac.hasAccesses(vm.getPermission('detail'))">
+                                                    <button type="button" class="btn btn-warning" title="Ubah Data">
+                                                    <i class="fa fa-pencil"></i>
+                                                    </button>
+                                                </a>
+                                                <button ng-if="main.ac.hasAccesses(vm.getPermission('delete'))" class="btn btn-danger" ng-confirm-click="Are you sure to delete this record ?" confirmed-click="vm.delete(x._id)"><i class="fa fa-trash"></i></button>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>            
+                <!-- /.box -->
+            </div>
+        </div>
+
+    </section>
+    <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->

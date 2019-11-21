@@ -1,0 +1,21 @@
+<table class="table table-bordered table-hover" ng-init="$ctrl.init();">
+  <tfoot>
+    <tr> 
+      <td colspan="4"><strong>Page:</strong> {{ $ctrl.currentPage }} / {{ $ctrl.lastPage }}
+        <div class="box-tools pull-right" ng-if="$ctrl.lastPage > 1">
+          <ul class="pagination pagination-sm inline">
+            <li><a ng-click="$ctrl.first()">First</a></li>
+            <li><a ng-click="$ctrl.previous()">«</a></li>
+            <li ng-if="$ctrl.currentPage - 2 > 1 && $ctrl.getNumber($ctrl.currentPage,'first') != 1"><a>...</a></li>
+            <li ng-repeat="n in $ctrl.getListNumber($ctrl.currentPage)" class="{{ n == $ctrl.currentPage ? 'active' : '' }}">
+              <a ng-click="$ctrl.goTo(n)">{{ n }}</a>
+            </li>
+            <li ng-if="$ctrl.currentPage + 2 < $ctrl.lastPage && $ctrl.getNumber($ctrl.currentPage,'last') != $ctrl.lastPage"><a>...</a></li>
+            <li><a ng-click="$ctrl.next()">»</a></li>
+            <li><a ng-click="$ctrl.last()">Last</a></li>
+          </ul>
+        </div>
+      </td>
+    </tr>
+  </tfoot>
+</table>

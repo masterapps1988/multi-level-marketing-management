@@ -1,0 +1,86 @@
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper" ng-init="vm.init()">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>List Approval
+        </h1>
+        <ol class="breadcrumb">
+            <li class="active"><i class="fa fa-dashboard"></i> List Approval</li>
+        </ol>
+    </section>
+    
+    <!-- Main content -->
+    <section class="content container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <!-- Search Widget -->
+                <div class="box">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Pencarian</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <form role="form" ng-submit="vm.doSearch()">
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Kata Kunci</label>
+                                        <input type="text" class="form-control" id="keyword" placeholder="Enter Kata Kunci" ng-model="vm.search.keyword">
+                                    </div>
+                                    <div class="form-group" ng-if="vm.role == 'admin'">
+                                        <label>Jabatan</label>
+                                        <select class="form-control select2" id="role" name="role" ng-model="vm.data.role_id" ng-select2 style="width:100%" required>
+                                            <option ng-repeat="x in vm.roles" value="{{ x.id }}">{{ x.label }}</option>
+                                        </select>
+                                    </div>
+                                    <div class="pull-right">
+                                        <button type="button" class="btn btn-default" ng-click="vm.search.keyword = ''; vm.doSearch()">Clear</button>
+                                        <button type="submit" class="btn btn-primary">Cari</button> 
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div box-overlay is-loading="vm.ls.get('loading').get()"></div>
+                </div>
+                <div class="box-footer text-right" ng-if="main.ac.hasAccess('account_status_approved')">
+                    <button type="button" class="btn btn-default" ng-click="vm.create()">Batal</button>
+                    <button type="submit" class="btn btn-primary" ng-click="vm.submit()">Simpan</button>
+                </div>
+                <!-- /.box -->
+
+                <div class="box">
+                    <div box-overlay is-loading="vm.ls.get('loading').get()"></div>
+                    <div class="box-body">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <paging current-page="vm.paginator.current_page" last-page="vm.paginator.last_page" show-page="vm.showPage(page)"></paging>
+                                <div class="table-responsive">
+                                    <table class="table table-bordered">
+                                        <tr>
+                                            <th style="width: 10px">#</th>
+                                            <th ng-click="vm.sortBy('approved')">Fullname <sortable order="vm.getOrderBy('full_name')"></sortable></th>
+                                            <th> Status</th>
+
+                                        </tr>
+                                        <tr ng-repeat="x in vm.list">
+                                            <td>{{ $index + 1 }}</td>
+                                            <td>{{ x.full_name }}</td>
+                                            <td class="text-center">
+                                                <input type="checkbox" id="approved" ng-model="x.approved" value="1" ng-checked="x.approved" ng-change="vm.add(x)" ng-disabled="x.is_db ? true : false">
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>            
+                <!-- /.box -->
+            </div>
+        </div>
+
+    </section>
+    <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->

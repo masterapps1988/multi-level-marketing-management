@@ -1,0 +1,6 @@
+<div class="container navbar-fixed-top we-notif">
+  <div class="alert alert-dismissible" ng-repeat="x in $ctrl.getMessages()" ng-class="{'alert-error': x.is_error, 'alert-success': !x.is_error }">
+    <button type="button" class="close" ng-click="$ctrl.removeMessage(x)">×</button>
+    {{ x.message }}
+  </div>
+</div>

@@ -1,0 +1,54 @@
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper" ng-controller="SettingPermissionController as vm" ng-init="vm.create()">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <h1>
+                Tambah/Ubah
+            </h1>
+            <ol class="breadcrumb">
+                <li><a ui-sref="setting-permission"><i class="fa fa-dashboard"></i> List Permission </a></li>
+                <li class="active">Detail</li>
+            </ol>
+        </section>
+    
+        <!-- Main content -->
+        <section class="content container-fluid">
+            <!-- left column -->
+            <!-- general form elements -->
+            <div class="box box-primary">
+                <!-- form start -->
+                <form role="form" name="myForm" ng-submit="myForm.$valid && vm.submit()">
+                    <div class="box-body">
+                        <div class="row">
+                            <div class="form-group col-sm-12">
+                                <label>Label*</label>
+                                <input type="text" required class="form-control" id="label" name="label" ng-model="vm.data.label" placeholder="Enter Lable" value>
+                            </div>
+                            <div class="form-group col-sm-12">
+                                <label>Name*</label>
+                                <input type="text" required class="form-control" id="name" name="name" ng-model="vm.data.name" placeholder="Enter Name" value>
+                            </div>
+                            <div class="form-group col-sm-12">
+                                <label>Notes*</label>
+                                <input type="text" required class="form-control" id="notes" name="notes" ng-model="vm.data.notes" placeholder="Enter Notes" value>
+                            </div>
+                        </div>
+                        <!-- ./row -->
+                    </div>
+                    <!-- /.box-body -->
+    
+                    <div class="box-footer">
+                        <div class="pull-right">
+                            <button type="button" class="btn btn-default" ng-click="user">Batal</button>
+                            <button type="submit" class="btn btn-primary">Simpan</button>
+                        </div>
+                    </div>
+                </form>
+                <div box-overlay is-loading="vm.ls.get('loading').get()"></div>            
+            </div>
+            <!-- /.box -->
+    
+        </section>
+        <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->

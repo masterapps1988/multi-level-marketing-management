@@ -1,0 +1,104 @@
+a[ng-click],
+[ng-click]{
+    cursor: pointer;
+}
+
+
+.bg-draft {
+    background-color: #b8c7ce !important;
+}
+
+.bg-pending {
+    background-color: #f39c12 !important;
+}
+
+.bg-revision {
+    background-color: #dd4b39 !important;
+}
+
+.bg-decline {
+    background-color: #dd4b39 !important;
+}
+
+.bg-approve {
+    background-color: #00a65a !important;
+}
+
+.table .checkbox {
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.table th.col-small {
+    width: 10px;
+}
+
+.table th.col-small-2 {
+    width: 20px;
+}
+
+.table th.col-small-3 {
+    width: 30px;
+}
+
+.table th.col-medium {
+    width: 100px;
+}
+
+.table th.col-medium-2 {
+    width: 200px;
+}
+.custom-height{
+  	height: 400px;
+}
+.custom-scroll {
+	overflow: auto;
+	height: 300px;
+}
+
+.date {
+	font-weight: bold;
+	font-size: 25px;
+}
+.year {
+	font-size: 11px;
+}
+
+.we-notif {
+        width: 90%;
+        margin-top: 5px;
+}
+
+.we-notif .alert {
+        margin-bottom: 5px;
+        padding: 5px 35px 5px 5px;
+}
+
+.hierarchy-center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.login-page-background {
+    background-color: #fff;
+    background-image: url(../../img/11tqewmkcnd33os.png);
+}
+
+.well-login {
+    margin: 0 auto;
+    margin-bottom: 0px;
+    min-height: 20px;
+    padding: 19px;
+    margin-bottom: 20px;
+    background-color: #fff;
+    border: 1px solid #e3e3e3;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .05);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .05);
+}
+
+.sidebar-toggle:before {
+    font-weight: 900;
+    font-family: "Font Awesome 5 Free";
+}

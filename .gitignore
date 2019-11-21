@@ -1,0 +1,16 @@
+/node_modules
+/bower_components
+/app/node_modules
+/app/views
+/app/bower_components
+/public/hot
+/public/storage
+/public/bower_components
+/public/build
+/public/fonts
+/public/tmp
+/public/resources
+/public/assets
+/public/mix-manifest.json
+/nbproject
+.vscode/

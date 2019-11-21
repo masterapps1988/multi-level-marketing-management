@@ -1,0 +1,61 @@
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper" ng-init="vm.getPermission()">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <h1>
+                Set Hak Akses Jabatan: {{vm.data.role}}
+            </h1>
+            <ol class="breadcrumb">
+                <li><a ui-sref="setting-roletype"><i class="fa fa-dashboard"></i> List Jabatan</a></li>
+                <li class="active">Set Hak Akses Jabatan</li>
+            </ol>
+        </section>
+    
+        <!-- Main content -->
+        <section class="content container-fluid">
+    
+            <div class="row">
+                <!-- left column -->
+                <div class="col-md-12">
+                    <!-- general form elements -->
+                    <div class="box box-primary">
+                        <div box-overlay is-loading="vm.ls.get('loading').get()"></div>
+                        <div class="box-header with-border text-right" ng-if="main.ac.hasAccess('setting_roletype_permission_set')">
+                            <button type="button" class="btn btn-default" ng-click="vm.create()">Batal</button>
+                            <button type="submit" class="btn btn-primary" ng-click="vm.submit()">Simpan</button>
+                        </div>
+                        <div class="box-body">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered table-hover">
+                                            <tr>
+                                                <th>Keterangan</th>
+                                                <th class="text-center"><a ng-click="vm.isStatus ? vm.selectAll() : vm.unselectAll()"><span ng-show="vm.isStatus">Action(Select All)</span><span ng-hide="vm.isStatus">Action(Unselect All)</span></a></th>
+                                            </tr>
+                                            <tr ng-repeat="x in vm.data.details">
+                                                <td>
+                                                    <span>{{ x.label }}</span>
+                                                </td>
+                                                <td class="text-center">
+                                                    <input type="checkbox" id="is_checked" ng-model="x.is_checked" value="1" ng-checked="x.is_checked" ng-change="vm.add(x)">
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="box-footer text-right" ng-if="main.ac.hasAccess('setting_roletype_permission_set')">
+                            <button type="button" class="btn btn-default" ng-click="vm.create()">Batal</button>
+                            <button type="submit" class="btn btn-primary" ng-click="vm.submit()">Simpan</button>
+                        </div>
+                        <!-- /.box-body -->
+                    </div>
+                    <!-- /.box -->
+                </div>
+            </div>
+        </section>
+        <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->

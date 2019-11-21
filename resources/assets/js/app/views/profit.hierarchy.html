@@ -1,0 +1,70 @@
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper" ng-init="vm.init()">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <h1>List Hierarchy
+            </h1>
+            <ol class="breadcrumb">
+                <li class="active"><i class="fa fa-dashboard"></i> List Hierarchy</li>
+            </ol>
+        </section>
+        
+        <!-- Main content -->
+        <section class="content container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="box">
+                        <div box-overlay is-loading="vm.ls.get('loading').get()"></div>
+                        <div class="box-body">
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <div id="temp" ng-if="vm.ls.get('loading').get()">
+                                        <div class="orgchart hierarchy-center">
+                                            <table>
+                                                <tr>
+                                                    <td colspan="2">
+                                                        <div class="node">
+                                                            <div class="office">ssss</div>
+                                                            <div class="title"><i class="fa fa-users symbol"></i>sss</div>
+                                                            <div><img src="http://localhost:8080/bower_components/admin-lte/dist/img/avatar5.png" class="user-image" alt="User Image"></div><i class="edge verticalEdge bottomEdge fa"></i></div>
+                                                    </td>
+                                                </tr>
+                                                <tr class="lines">
+                                                    <td colspan="2">
+                                                        <div class="downLine"></div>
+                                                    </td>
+                                                </tr>
+                                                <tr class="lines">
+                                                    <td class="rightLine"></td>
+                                                    <td class="leftLine"></td>
+                                                </tr>
+                                                <tr class="nodes">
+                                                    <td colspan="2">
+                                                        <table>
+                                                            <tr>
+                                                                <td>
+                                                                    <div class="node">
+                                                                        <div class="office">sssss</div>
+                                                                        <div class="title">ss</div>
+                                                                        <div><img src="http://localhost:8080/bower_components/admin-lte/dist/img/avatar5.png" class="user-image" alt="User Image"></div><i class="edge verticalEdge topEdge fa"></i></div>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div id="chart-container"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>            
+                    <!-- /.box -->
+                </div>
+            </div>
+    
+        </section>
+        <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->

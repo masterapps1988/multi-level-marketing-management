@@ -1,0 +1,64 @@
+<aside class="main-sidebar">
+
+    <!-- sidebar: style can be found in sidebar.less -->
+    <section class="sidebar">
+
+      <!-- Sidebar user panel (optional) -->
+      <div ng-show="main.loaded" class="user-panel">
+        <div class="pull-left" style='color: white;'>
+          <%if (user_info.role_type_code.short_name != 'admin') { %>
+          <p>Uang Kamu {{ main.bl.getBalance().balance | currency:"Rp. ":0 }}</p>
+          <% } %>
+          <%= user_info.username %>
+        </div>
+      </div>
+
+      <!-- Sidebar Menu -->
+      <ul class="sidebar-menu" data-widget="tree">
+        <li class="header">Menu</li>
+        <!-- Optionally, you can add icons to the links -->
+        <li class="treeview" ui-sref-active="treeview active">
+          <a href="javascript:void(0)">
+            <i class="fas fa-chart-line fa-lg"></i></i> <span>Profit</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li ui-sref-active="active" ng-if="main.ac.hasAccess('profit_hierarchy')"><a ui-sref="profit-hierarchy"><i class="fas fa-circle"></i> List Hierarchy</a></li>
+            <li ui-sref-active="active"><a ui-sref="profit-downline-earning"><i class="fas fa-circle"></i> List Downline Earning</a></li>
+          </ul>
+        </li>
+        <li class="treeview" ui-sref-active="treeview active" ng-if="main.ac.hasAccess('account')">
+          <a href="javascript:void(0)">
+            <i class="far fa-user-circle fa-lg"></i> <span>Account</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li ui-sref-active="active" ng-if="main.ac.hasAccess('account_status_list')"><a ui-sref="account-status"><i class="fas fa-circle"></i> List Approval</a></li>
+            <li ui-sref-active="active" ng-if="main.ac.hasAccess('account_customer_list')"><a ui-sref="account-customer"><i class="fas fa-circle"></i> List Members</a></li>
+            <li ui-sref-active="active" ng-if="main.ac.hasAccess('account_user_list')"><a ui-sref="account-user"><i class="fas fa-circle"></i> List User</a></li>
+            <li ui-sref-active="active" ng-if="main.ac.hasAccess('account_mpin_list')"><a ui-sref="account-mpin"><i class="fas fa-circle"></i> List Mpin</a></li>
+          </ul>
+        </li>
+        <li class="treeview" ui-sref-active="treeview active" ng-if="main.ac.hasAccess('setting')">
+          <a href="javascript:void(0)">
+            <i class="fas fa-cog"></i> <span>Setting</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li ui-sref-active="active" ng-if="main.ac.hasAccess('setting_level_list')"><a ui-sref="setting-level"><i class="fas fa-circle"></i> List Level</a></li>
+            <li ui-sref-active="active"><a ui-sref="setting-permission"><i class="fas fa-circle"></i> List Permission</a></li>
+            <li ui-sref-active="active"><a ui-sref="setting-roletype"><i class="fas fa-circle"></i> List Jabatan</a></li>
+          </ul>
+        </li>
+        <li><a href="/logout"><i class="fas fa-sign-out-alt"></i><span> Logout</span></a></li>
+      </ul>
+      <!-- /.sidebar-menu -->
+    </section>
+    <!-- /.sidebar -->
+  </aside>

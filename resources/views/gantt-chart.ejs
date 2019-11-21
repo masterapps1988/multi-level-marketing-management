@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+
+<!-- Head -->
+
+<head>
+  <!-- Meta data -->
+  <meta charset="utf-8">
+  <title>Jadwal {{ $quotation_name }}</title>
+  <meta name="description" content="FREE javascript gantt - jsGantt Improved HTML, CSS and AJAX only">
+  <meta name="keywords" content="jsgantt-improved free javascript gantt-chart html css ajax">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <style>
+    .row [type=checkbox] {
+      margin-right: 10px
+    }
+
+    .row {
+      width: 100%
+    }
+  </style>
+  <style type="text/css">
+    <?php
+      $r = 0;
+      $g = 0;
+      $b = 0;
+
+      $i = 0;
+      $c = 360/count($detail);
+    ?>
+    @foreach ($detail as $x)
+      <?php
+        $hex = $list_color[$i % count($list_color)];
+        $i++;
+      ?>
+      .bar-{{ $x->id }} {
+        height: 0px;
+        border-top: 13px solid;
+        border-color: {{ $hex }};
+      }
+    @endforeach
+  </style>
+  <!-- External resources -->
+  <!-- jQuery + Ajax [required by Bootstrap] -->
+  <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb"
+    crossorigin="anonymous"></script>
+  <!-- Required by smooth scrolling -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <!-- Bootstrap v4.0.0 Alpha -->
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ"
+    crossorigin="anonymous" />
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn"
+    crossorigin="anonymous"></script>
+  <!-- Font Awesome -->
+  <script src="https://use.fontawesome.com/78d1e57168.js"></script>
+  <!-- Google's Code Prettify -->
+  <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?lang=css&amp;skin=sunburst"></script>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Cookie|Satisfy|Kelly+Slab|Overlock" rel="stylesheet">
+
+  <!-- jsGanttImproved App -->
+  <link href="/bower_components/jsgantt-improved/docs/jsgantt.css" rel="stylesheet" type="text/css" />
+  <script src="/bower_components/jsgantt-improved/docs/jsgantt.js" type="text/javascript"></script>
+</head>
+
+<!-- Content -->
+
+<body data-spy="scroll" data-target="#my-navbar-nav" style="padding: 30px;">
+
+  <div class="row">
+    <div class="col-sm-12"><div class="text-center"><h1>Penjadwalan</h1></div></div>
+  </div>
+  <div class="row">
+    <div class="col-sm-1">No</div><div class="col-sm-11">: {{ $ref_no }}</div>
+  </div>
+  <div class="row">
+    <div class="col-sm-1">Project</div><div class="col-sm-11">: {{ $project_name }}</div>
+  </div>
+  <div class="row">
+    <div class="col-sm-1">Alamat</div><div class="col-sm-11">: {{ $address }}</div>
+  </div>
+  <div class="row">
+    <div class="col-sm-1">Tanggal</div><div class="col-sm-11">: {{ $start_date }} - {{ $finish_date }}</div>
+  </div>
+  <hr>
+  <div class="row">
+    <div class="col-sm-12">
+      <div id="embedded-Gantt"></div>
+    </div>
+  </div>
+
+</body>
+<script>
+function start(e) {
+  var g = new JSGantt.GanttChart(document.getElementById('embedded-Gantt'), 'week');
+  if (g.getDivId() != null) {
+
+    // Parameters                     (pID, pName,                  pStart,       pEnd,        pStyle,         pLink (unused)  pLink: pMilpMile: e, pRes,       pComp, pGroup, pParent, pOpen, pDepend, pCaption, pNotes, pGantt)
+    
+    // JSGantt.parseJSON($('#json').attr('href'), g);
+
+    var index = 1;
+    {!! $detail !!}.forEach(function(data) {
+        g.AddTaskItem(new JSGantt.TaskItem(index, data.name, data.schedule_start, data.schedule_finish, 'bar-'+data.id, '', 0, 'Brian', 0, 0, 0, 1, '', 1000, 'Some Notes text', g));
+        index++;
+    });
+
+
+    // SET LANG FROM INPUT
+    lang = 'en';
+    delay = 150;
+    vShowRes = 0;
+    vShowCost = 0;
+    vShowComp = 0;
+    vShowDur = 1;
+    vShowStartDate = 1;
+    vShowEndDate = 1;
+    vShowPlanStartDate = 0;
+    vShowPlanEndDate = 0; 
+    vShowTaskInfoLink = 0;
+    vShowEndWeekDate = 0;
+
+    g.setOptions({
+      vCaptionType: 'Complete',  // Set to Show Caption : None,Caption,Resource,Duration,Complete,
+      vQuarterColWidth: 36,
+      vDateTaskDisplayFormat: 'day dd month yyyy', // Shown in tool tip box
+      vDayMajorDateDisplayFormat: 'mon yyyy - Week ww',// Set format to display dates in the "Major" header of the "Day" view
+      vWeekMinorDateDisplayFormat: 'dd mon', // Set format to display dates in the "Minor" header of the "Week" view
+      vLang: lang,
+      vShowRes,
+      vShowCost,
+      vShowComp,
+      vShowDur,
+      vShowStartDate,
+      vShowEndDate,
+      vShowPlanStartDate,
+      vShowPlanStartDate,
+      vShowTaskInfoLink, // Show link in tool tip (0/1)
+      vShowEndWeekDate,  // Show/Hide the date for the last day of the week in header for daily view (1/0)
+      vUseSingleCell: 10000, // Set the threshold at which we will only use one cell per table row (0 disables).  Helps with rendering performance for large charts.
+      vTooltipDelay: delay,
+      vFormatArr: ['Day', 'Week', 'Month', 'Quarter'], // Even with setUseSingleCell using Hour format on such a large chart can cause issues in some browsers
+    });
+    //DELAY FROM INPUT
+    g.setUseToolTip(0);
+
+    g.Draw();
+
+  } else {
+    alert("Error, unable to create Gantt Chart");
+  }
+}
+
+start('pt')
+</script>
+
+</html>

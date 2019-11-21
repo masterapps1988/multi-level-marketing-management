@@ -1,0 +1,27 @@
+1,account,Account - Account,,permission
+2,account_user_create,Account - User – Create,,permission
+3,account_user_update,Account - User – Update,,permission
+4,account_user_delete,Account - User – Delete,,permission
+5,account_user_detail,Account - User – Detail,,permission
+6,account_user_list,Account - User – List,,permission
+7,account_status_list,Account - Status – List,,permission
+8,account_status_approved,Account - Status – Approved,,permission
+9,profit_hierarchy,Profit – Hierarchy,,permission
+10,setting,Setting - Setting,,permission
+11,setting_level_list,Setting – Level - List,,permission
+12,setting_level_create,Setting – Level - Create,,permission
+13,setting_level_detail,Setting – Level - Detail,,permission
+14,setting_level_delete,Setting – Level - Delete,,permission
+15,setting_permission_list,Setting – Permission - List,,permission
+16,setting_permission_create,Setting – Permission - Create,,permission
+17,setting_permission_detail,Setting – Permission - Detail,,permission
+18,setting_permission_delete,Setting – Permission - Delete,,permission
+19,setting_roletype_list,Setting – RoleType - List,,permission
+20,setting_roletype_create,Setting – RoleType - Create,,permission
+21,setting_roletype_detail,Setting – RoleType - Detail,,permission
+22,setting_roletype_delete,Setting – RoleType - Delete,,permission
+23,setting_roletype_permission_view,Setting – RoleType - Permission - View,,permission
+24,setting_roletype_permission_set,Setting – RoleType - Permission - Set,,permission
+25,account_customer_list,Account - Customer – List,,permission
+26,account_mpin_list,Account - Mpin – List,,permission
+27,account_mpin_generate,Account - Mpin – Generate,,permission
