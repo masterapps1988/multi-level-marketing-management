@@ -1,5 +1,5 @@
 var mongoose = require("mongoose");
-var mongoDB = "mongodb://ezpayuseradmin:gfdj209HJuwhkd21Jkkeh@localhost:27017/";
+var mongoDB = "mongodb://admin:admin@localhost:27017/";
 var chalk = require('chalk');
 
 var connected = chalk.bold.cyan;

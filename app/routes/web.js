@@ -7,7 +7,7 @@ var app = express();
 app.set('views', path.join(__dirname, '../../resources/views'));
 
 router.use('/login', function (req, res) {
-    var token = req.cookies ? req.cookies.api_token : '';
+    var token = req.cookies ? req.cookies.api_token_mlm : '';
     
     if(!token) {
         res.clearCookie("api_token");
@@ -41,7 +41,7 @@ router.use('/register', function (req, res) {
         re_password: null
     }
 
-    var token = req.cookies ? req.cookies.api_token : '';
+    var token = req.cookies ? req.cookies.api_token_mlm : '';
 
     if(req.cookies && req.cookies.failed_register) {
         formData = req.cookies.failed_register
@@ -57,7 +57,7 @@ router.use('/register', function (req, res) {
 });
 
 router.use('/logout', function (req, res) {
-    var token = req.cookies ? req.cookies.api_token : '';
+    var token = req.cookies ? req.cookies.api_token_mlm : '';
     res.clearCookie("api_token");
     res.clearCookie("failed_login");
     if(token) {

@@ -8,13 +8,13 @@
       this.expired = 24 * 60 * 60;
 
       this.get = function() {
-        return $cookies.get('api_token');
+        return $cookies.get('api_token_mlm');
       }
 
       this.set = function(apiToken) {
         var expired = new Date().getTime() + this.expired * 1000;
         
-        $cookies.put('api_token', apiToken, {'expires' : new Date(expired)});
+        $cookies.put('api_token_mlm', apiToken, {'expires' : new Date(expired)});
       }
     }
 })();

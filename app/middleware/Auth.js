@@ -93,7 +93,7 @@ middleware = (param) => {
             var decoded;
 
             try {
-                var token = req.cookies ? req.cookies.api_token : '';
+                var token = req.cookies ? req.cookies.api_token_mlm : '';
                 let remoteIp = req.connection.remoteAddress;
                 remoteIp = remoteIp ? remoteIp.split(':') : [];
                 

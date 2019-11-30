@@ -22,7 +22,7 @@ module.exports.auth = {
         
         if(result['status']) {
             let expired = 24 * 60 * 60;
-            res.cookie('api_token', result['token'], {
+            res.cookie('api_token_mlm', result['token'], {
                 expires: new Date(new Date().getTime() + expired * 1000),
                 httpOnly: false
             })
