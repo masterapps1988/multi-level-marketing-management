@@ -18,7 +18,7 @@
     "gulp-ng-annotate": "^2.1.0",
     "gulp-rename": "^1.4.0",
     "gulp-version-number": "^0.2.4",
-    "jquery": "^3.2",
+    "jquery": "^3.5",
     "lodash": "^4.17.4",
     "vue": "^2.5.7"
   },
