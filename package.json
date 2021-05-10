@@ -19,7 +19,7 @@
     "gulp-rename": "^1.4.0",
     "gulp-version-number": "^0.2.4",
     "jquery": "^3.2",
-    "lodash": "^4.17.4",
+    "lodash": "^4.17.21",
     "vue": "^2.5.7"
   },
   "dependencies": {
